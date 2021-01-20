@@ -1,6 +1,8 @@
 const express = require('express'); // like a PHP require
-const server = express();
 const path = require('path');
+
+const server = express();
+
 
 
 //set your views directory
@@ -11,12 +13,12 @@ server.use(express.static(path.join(__dirname, "public")));
 
 server.get("/", (req, res) => {
     console.log('you hit the home route');
-    res.sendFile('views/index.html');
+    res.sendFile(path.join(__dirname, 'views/index.html')); // localhost:3000/views/index.html
 })
 
 server.get("/contact", (req, res) => {
     console.log('hit the contact route');
-    res.sendFile('contact');
+    res.sendFile(path.join(__dirname, 'views/contact.html'));
 })
 
 const port = process.env.PORT || 3000; //localhost:3000
